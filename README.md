@@ -1,1 +1,2 @@
 # nadouf-math-website
+This is a documentation webpage for the nadouf-math library. The page was generated with AI (vibe coding), as code quality wasn't a priority — this is purely about the layout/structure.
