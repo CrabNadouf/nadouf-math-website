@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadouf Math — документация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Nadouf Math library</h1>
+        
+        <div class="nav-block">
+            <div class="nav-title">Содержание</div>
+            <div class="nav-grid">
+                <a href="#description">Описание</a>
+                <a href="#features">Возможности</a>
+                <a href="#installing">Установка</a>
+                <a href="#quickstart">Быстрый старт</a>
+                <a href="#documentation">Документация</a>
+                <a href="#constants">Константы</a>
+                <a href="#errors">Обработка ошибок</a>
+            </div>
+        </div>
+
+        <section id="description">
+            <h2>Описание</h2>
+            <p>Высокая производительность · Безопасная работа с памятью · Точные вычисления</p>
+            <p>Библиотека Nadouf Math полностью написана на Rust и обёрнута для Python, объединяя производительность скомпилированного кода и простоту Python API. Подходит для научных вычислений, анализа данных и обучения.</p>
+        </section>
+
+        <section id="features">
+            <h2>Возможности</h2>
+            <ul>
+                <li>Базовые операции: сложение, разность, произведение, деление</li>
+                <li>Степени и корни: квадрат, куб, произвольная степень, квадратный корень, кубический корень</li>
+                <li>Теория чисел: факториал (до 33 включительно), НОД, НОК</li>
+                <li>Тригонометрия: синус, косинус, тангенс (через ряд Тейлора)</li>
+                <li>Продвинутая математика: тетрация, функция знака</li>
+                <li>Объектно-ориентированный API: вычисления с состоянием и цепочками методов</li>
+            </ul>
+        </section>
+
+        <section id="installing">
+            <h2>Установка</h2>
+            <h3>Из PyPi (рекомендуется)</h3>
+            <div class="code-block">pip install nadouf-math</div>
+            <h3>Из исходников</h3>
+            <div class="code-block">git clone https://github.com/CrabNadouf/Nadouf_Math_Library.git
+cd Nadouf_Math_Library
+pip install maturin
+maturin develop</div>
+        </section>
+
+        <section id="quickstart">
+            <h2>Быстрый старт</h2>
+            <div class="code-block">from nadouf_math import Nadoufmath, sum_of, dif_of, factorial
+
+# Стиль 1: цепочка методов
+calc = Nadoufmath(5)
+print(calc.sum_of([5]).dif_of([6]).factorial())
+
+# Стиль 2: пошагово
+calc = Nadoufmath(5)
+calc = calc.sum_of([5])
+calc = calc.dif_of([6])
+calc = calc.factorial()
+print(calc)
+
+# Стиль 3: функции напрямую
+result = sum_of([5, 5])
+result = dif_of([result, 6])
+result = factorial(int(result))
+print(result)</div>
+        </section>
+
+        <section id="documentation">
+            <h2>Документация</h2>
+            
+            <h3>Функциональный API</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Функция</th><th>Описание</th><th>Пример</th><th>Результат</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>sum_of(list)</td><td>Сумма всех чисел</td><td>sum_of([1,2,3,4])</td><td>10.0</td></tr>
+                        <tr><td>dif_of(list)</td><td>Первый минус остальные</td><td>dif_of([10,3,2])</td><td>5.0</td></tr>
+                        <tr><td>mult_of(list)</td><td>Произведение всех</td><td>mult_of([2,3,4])</td><td>24.0</td></tr>
+                        <tr><td>div_of(list)</td><td>Первый разделить на остальные</td><td>div_of([100,2,5])</td><td>10.0</td></tr>
+                        <tr><td>int_div_of(list)</td><td>Целочисленное деление</td><td>int_div_of([10,3])</td><td>3</td></tr>
+                        <tr><td>square(x)</td><td>x²</td><td>square(5)</td><td>25.0</td></tr>
+                        <tr><td>cube(x)</td><td>x³</td><td>cube(3)</td><td>27.0</td></tr>
+                        <tr><td>power(x, y)</td><td>x^y</td><td>power(2,10)</td><td>1024.0</td></tr>
+                        <tr><td>square_root(x)</td><td>√x</td><td>square_root(25)</td><td>5.0</td></tr>
+                        <tr><td>cube_root(x)</td><td>∛x</td><td>cube_root(-8)</td><td>-2.0</td></tr>
+                        <tr><td>factorial(n)</td><td>n! (до 33)</td><td>factorial(5)</td><td>120</td></tr>
+                        <tr><td>gcd_with_int(list)</td><td>НОД целых чисел</td><td>gcd_with_int([48,18])</td><td>6</td></tr>
+                        <tr><td>gcd_with_float(list)</td><td>НОД дробных чисел</td><td>gcd_with_float([48.5,18.3])</td><td>6</td></tr>
+                        <tr><td>lcm_with(list)</td><td>НОК чисел</td><td>lcm_with([12,18])</td><td>36.0</td></tr>
+                        <tr><td>sin(x, terms=20)</td><td>Синус (ряд Тейлора)</td><td>sin(3.14159/2)</td><td>≈1.0</td></tr>
+                        <tr><td>cos(x, terms=20)</td><td>Косинус</td><td>cos(3.14159)</td><td>≈-1.0</td></tr>
+                        <tr><td>tan(x, terms=20)</td><td>Тангенс</td><td>tan(3.14159/4)</td><td>≈1.0</td></tr>
+                        <tr><td>floor(x)</td><td>Округление вниз</td><td>floor(5.7)</td><td>5</td></tr>
+                        <tr><td>ceil(x)</td><td>Округление вверх</td><td>ceil(5.2)</td><td>6</td></tr>
+                        <tr><td>is_positive(x)</td><td>x > 0 ?</td><td>is_positive(-5)</td><td>False</td></tr>
+                        <tr><td>is_negative(x)</td><td>x < 0 ?</td><td>is_negative(-5)</td><td>True</td></tr>
+                        <tr><td>is_integer(x)</td><td>Целое число?</td><td>is_integer(5.0)</td><td>True</td></tr>
+                        <tr><td>sign(x)</td><td>Знак числа (-1,0,1)</td><td>sign(-42)</td><td>-1</td></tr>
+                        <tr><td>is_even(x)</td><td>Чётное?</td><td>is_even(4)</td><td>True</td></tr>
+                        <tr><td>is_odd(x)</td><td>Нечётное?</td><td>is_odd(7)</td><td>True</td></tr>
+                        <tr><td>tetration(base, height)</td><td>base^^height</td><td>tetration(2,3)</td><td>16.0</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Объектно-ориентированный API (класс Nadoufmath)</h3>
+            <div class="code-block">from nadouf_math import Nadoufmath
+
+# Однострочная цепочка
+print(Nadoufmath(7).sum_of([3]).dif_of([5]))
+
+# Пошагово
+calc = Nadoufmath(7)
+calc = calc.sum_of([3])
+calc = calc.dif_of([5])
+print(calc)
+
+# Многострочная цепочка
+result = (Nadoufmath(7)
+          .sum_of([3])
+          .dif_of([5]))
+print(result)</div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Метод</th><th>Описание</th><th>Пример</th><th>Результат</th></tr></thead>
+                    <tbody>
+                        <tr><td>Nadoufmath(value)</td><td>Создать экземпляр</td><td>calc = Nadoufmath(10)</td><td>-</td></tr>
+                        <tr><td>.sum_of(list)</td><td>Прибавить сумму</td><td>calc.sum_of([1,2])</td><td>self + 3</td></tr>
+                        <tr><td>.dif_of(list)</td><td>Вычесть (первый - остальные)</td><td>calc.dif_of([3,2])</td><td>self - 1</td></tr>
+                        <tr><td>.mult_of(list)</td><td>Умножить на произведение</td><td>calc.mult_of([2,3])</td><td>self × 6</td></tr>
+                        <tr><td>.div_of(list)</td><td>Разделить на каждое</td><td>calc.div_of([2,5])</td><td>self ÷ 2 ÷ 5</td></tr>
+                        <tr><td>.int_div_of(list)</td><td>Целочисленное деление</td><td>calc.int_div_of([3,2])</td><td>self // 3 // 2</td></tr>
+                        <tr><td>.square()</td><td>Возвести в квадрат</td><td>calc.square()</td><td>self²</td></tr>
+                        <tr><td>.cube()</td><td>Возвести в куб</td><td>calc.cube()</td><td>self³</td></tr>
+                        <tr><td>.power(exp)</td><td>Возвести в степень exp</td><td>calc.power(3)</td><td>self³</td></tr>
+                        <tr><td>.power_of_2()</td><td>2^self</td><td>calc.power_of_2()</td><td>2^self</td></tr>
+                        <tr><td>.square_root()</td><td>Квадратный корень</td><td>calc.square_root()</td><td>√self</td></tr>
+                        <tr><td>.cube_root()</td><td>Кубический корень</td><td>calc.cube_root()</td><td>∛self</td></tr>
+                        <tr><td>.factorial()</td><td>Факториал self</td><td>calc.factorial()</td><td>self!</td></tr>
+                        <tr><td>.gcd_with_int(list)</td><td>НОД с числами из списка</td><td>calc.gcd_with_int([48,18])</td><td>gcd(self, ...)</td></tr>
+                        <tr><td>.gcd_with_float(list)</td><td>НОД с вещественными</td><td>calc.gcd_with_float([48.5,18.3])</td><td>gcd(self, ...)</td></tr>
+                        <tr><td>.lcm_with(list)</td><td>НОК с числами</td><td>calc.lcm_with([12,18])</td><td>lcm(self, ...)</td></tr>
+                        <tr><td>.sin(terms=20)</td><td>Синус</td><td>calc.sin()</td><td>sin(self)</td></tr>
+                        <tr><td>.cos(terms=20)</td><td>Косинус</td><td>calc.cos()</td><td>cos(self)</td></tr>
+                        <tr><td>.tan(terms=20)</td><td>Тангенс</td><td>calc.tan()</td><td>tan(self)</td></tr>
+                        <tr><td>.floor()</td><td>Округлить вниз</td><td>calc.floor()</td><td>⌊self⌋</td></tr>
+                        <tr><td>.ceil()</td><td>Округлить вверх</td><td>calc.ceil()</td><td>⌈self⌉</td></tr>
+                        <tr><td>.sign()</td><td>Присвоить знак</td><td>calc.sign()</td><td>-1, 0 или 1</td></tr>
+                        <tr><td>.is_positive()</td><td>self > 0 ?</td><td>calc.is_positive()</td><td>bool</td></tr>
+                        <tr><td>.is_negative()</td><td>self < 0 ?</td><td>calc.is_negative()</td><td>bool</td></tr>
+                        <tr><td>.is_even()</td><td>self чётное?</td><td>calc.is_even()</td><td>bool</td></tr>
+                        <tr><td>.is_odd()</td><td>self нечётное?</td><td>calc.is_odd()</td><td>bool</td></tr>
+                        <tr><td>.tetration(height)</td><td>self^^height</td><td>calc.tetration(3)</td><td>self^^3</td></tr>
+                        <tr><td>.get_number()</td><td>Получить текущее значение</td><td>calc.get_number()</td><td>float</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="constants">
+            <h2>Константы</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Константа</th><th>Значение</th><th>Описание</th></tr></thead>
+                    <tbody>
+                        <tr><td>number_pi</td><td>3.141592653589793</td><td>π (пи)</td></tr>
+                        <tr><td>number_e</td><td>2.718281828459045</td><td>e (число Эйлера)</td></tr>
+                        <tr><td>infinity</td><td>inf</td><td>Положительная бесконечность</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="errors">
+            <h2>Обработка ошибок</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Тип ошибки</th><th>Когда возникает</th><th>Пример</th></tr></thead>
+                    <tbody>
+                        <tr><td>ZeroDivisionError</td><td>Деление на ноль</td><td>div_of([10, 0])</td></tr>
+                        <tr><td>ValueError</td><td>Факториал отрицательного числа</td><td>factorial(-5)</td></tr>
+                        <tr><td>ValueError</td><td>Факториал > 33</td><td>factorial(34)</td></tr>
+                        <tr><td>ValueError</td><td>Пустой список для НОД</td><td>gcd_with_int([])</td></tr>
+                        <tr><td>ZeroDivisionError</td><td>Тангенс π/2</td><td>tan(3.14159/2)</td></tr>
+                        <tr><td>ValueError</td><td>Отрицательная высота тетрации</td><td>tetration(2, -1)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>Nadouf Math</p>
+        </div>
+    </div>
+</body>
+</html>
